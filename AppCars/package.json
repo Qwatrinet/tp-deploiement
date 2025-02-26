@@ -1,0 +1,15 @@
+{
+  "name": "appcars",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mdevoldere",
+  "license": "GPL-3.0-or-later",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
