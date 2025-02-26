@@ -53,7 +53,7 @@ app.get('/cars', (req, res) => {
 // ex: // GET http://localhost:3000/car/3 -> show the car with ID 3
 app.get('/car/:id', (req, res) => {
 
-  let result = cars.find(x => x.id === req.params.id)
+  let result = cars.find(x => x.id === parseInt(req.params.id))
 
   if(result === undefined) {
     result = { error: 'Unable to find this car.'}
