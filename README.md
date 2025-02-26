@@ -54,5 +54,3 @@ Stopper le serveur :
     - Affiche la voiture N°4
 - [http://localhost:3000/car/5](http://localhost:3000/car/5)
     - Affiche la voiture N°5
-
-# travail à réaliser
