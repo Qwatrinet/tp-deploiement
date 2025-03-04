@@ -1,0 +1,6 @@
+@RandomQuotes_HostAddress = http://localhost:5120
+
+GET {{RandomQuotes_HostAddress}}/quotes/
+Accept: application/json
+
+###
