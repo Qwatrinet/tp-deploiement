@@ -11,14 +11,13 @@ namespace Products.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
-            /*
-            // rÈcupÈrer la chaine de connexion ‡ partir du fichier appsettings.json
-            var connectionString = builder.Configuration.GetConnectionString("productConnection");
-            // Utiliser cette chaine de connexion dans notre DbContext.
+            
+            // r√©cup√©rer la chaine de connexion √† partir du fichier appsettings.json
+            var connectionString = builder.Configuration.GetConnectionString("localConnection");
+            // R√©f√©rencer le Dbcontext.
             builder.Services.AddDbContext<ProductsDbContext>(options => options.UseSqlServer(connectionString));
-            */
-            builder.Services.AddDbContext<ProductsDbContext>();
+
+            // builder.Services.AddDbContext<ProductsDbContext>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

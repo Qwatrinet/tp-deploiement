@@ -2,16 +2,38 @@
 
 # Travail à réaliser
 
+## Créer le conteneur pour l'application Web
  
 1. Ajouter un `Dockerfile` 
 2. Éditer le `Dockerfile` pour encapsuler l'application dans un conteneur Docker
     - L'application doit être disponible via le port **4500**.
-3. Tester l'application
+3. Tester l'application 
 4. Créer un fichier "USAGE.md" qui contiendra:
     - la commande Docker permettant de lancer un container à partir du Dockerfile que vous avez implémenté.
 5. Créer un fichier `docker-compose.yml` permettant de simplifier le démarrage du conteneur
 
 > /!\ Vous ne devez en aucun cas modifier le code de l'application !
+
+## Créer un conteneur pour la base de données
+
+2 chaînes de connexion sont présentes dans le fichier de configuration de l'application.
+
+- "**localConnection**" : Chaine de connexion au serveur SQL local de Visual Studio
+- **containerConnection**": Chaine de connexion à utiliser lorsque l'application et la base de données seront "conteneurisés". 
+
+Par défaut, l'application Web utilise le serveur SQL local de Visual Studio.
+
+Pour modifier la chaine de connexion utilisée par l'application, Ouvrir le fichier "Program.cs" de l'application web et modifier le nom de la chaine de connexion ligne 16 :
+
+Pour utiliser le serveur SQL de Visual Studio : 
+- `var connectionString = builder.Configuration.GetConnectionString("localConnection");`
+Pour utiliser le serveur SQL conteneurisé à partir de l'application locale :
+- `var connectionString = builder.Configuration.GetConnectionString("containerConnection");`
+Pour utiliser le serveur SQL conteneurisé à partir du conteneur de l'application :
+- `var connectionString = builder.Configuration.GetConnectionString("composeConnection");`
+
+
+## Créer un docker-compose pour  rassembler l'application et la base de données
 
 ---
 
