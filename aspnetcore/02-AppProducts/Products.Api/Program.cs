@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Products.Api.Db;
 
@@ -27,11 +28,21 @@ namespace Products.Api
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            //if (app.Environment.IsDevelopment())
+            //{
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+                c.SwaggerEndpoint("swagger/v1/swagger.json", "Random Quotes API");
+                c.RoutePrefix = "";
+            });
+            //}
+
+            var rewriteOptions = new RewriteOptions()
+                .AddRedirect("swagger/index.html", "/index.html", 301)
+                .AddRedirect("swagger", "/index.html", 301);
+            app.UseRewriter(rewriteOptions);
 
             app.UseAuthorization();
 

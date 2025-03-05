@@ -1,5 +1,59 @@
 # TP Déploiement Docker : ASP.NET Core Products API
 
+# Initialisation du projet
+
+1. Ouvrir un terminal dans le répertoire "02-AppProducts".
+2. Restaurer les packages Nuget.
+
+# Utiliser l'application en local
+
+Avant de créer le conteneur, vérifier le bon fonctionnement de l'application sur votre machine de travail.
+
+1. Ouvrir la solution dans Visual Studio.
+2. Restaurer les pakages Nuget.
+3. Initialiser la base de données (La migration est déjà prête à être appliquée)
+    1. Entrer la commande `update-database` dans la console du gestionnaire de Package Nuget
+    2. La base de données est créée avec 5 produits
+4. Démarrer l'application en mode "Debug".
+    - L'application se lance dans le navigateur sur le port 5091.
+5. Afficher la liste des produits (opération GET /products)
+
+# Travail à réaliser
+
+> **Avant de commencer**
+> 
+> Le fichier **appsettings.json** contient 3 chaines de connexion : 
+> 
+> - **localConnection**: à utiliser pour tester l'application en local
+> - **containerConnection**: à utiliser pour connecter l'application locale au conteneur de la base de données
+> - **composeConnection**: à utiliser lorsque l'application et la base de données sont dans leurs conteneurs respectifs
+
+## Créer le conteneur pour l'application Web
+ 
+1. Ajouter un `Dockerfile`.
+2. Éditer le `Dockerfile` pour encapsuler l'application dans un conteneur Docker.
+    - L'application doit être disponible via le port **8000**.
+3. Tester l'application avec Docker.
+4. Créer un fichier "USAGE.md" qui contiendra:
+    - La commande Docker permettant de lancer un container à partir du Dockerfile que vous avez implémenté.
+5. Créer un fichier `docker-compose.yml` permettant de simplifier le démarrage du conteneur.
+
+> /!\ Vous ne devez en aucun cas modifier le code de l'application !
+
+---
+
+## Routes de l'API : 
+
+- **/**
+    - Page d'accueil, affiche l'interface de Swagger
+- **/api/Quotes**
+    - Affiche toutes les citations
+- **/api/Quotes/random**
+    - Affiche une citation au hasard
+
+
+
+
 # Travail à réaliser
 
 ## Créer le conteneur pour l'application Web

@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Rewrite;
+
 namespace RandomQuotes
 {
     public class Program
@@ -19,16 +21,17 @@ namespace RandomQuotes
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
             //{
-                app.UseSwagger(c =>
-                {
-                    c.RouteTemplate = "swagger/v1/swagger.json";
-                });
+                app.UseSwagger();
 
                 app.UseSwaggerUI(c =>
                 {
+                    c.SwaggerEndpoint("swagger/v1/swagger.json", "Random Quotes API");
                     c.RoutePrefix = "";
                 });
             //}
+
+            var rewriteOptions = new RewriteOptions().AddRedirect("swagger/index.html", "/index.html", 301);
+            app.UseRewriter(rewriteOptions);
 
             app.UseAuthorization();
 

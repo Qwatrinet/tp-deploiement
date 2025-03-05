@@ -5,6 +5,7 @@ namespace Products.Api.Models
 {
     public class Product
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Required]
