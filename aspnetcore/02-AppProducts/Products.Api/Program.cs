@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Products.Api.Db;
@@ -14,7 +13,7 @@ namespace Products.Api
             // Add services to the container.
             
             // récupérer la chaine de connexion à partir du fichier appsettings.json
-            var connectionString = builder.Configuration.GetConnectionString("localConnection");
+            var connectionString = builder.Configuration.GetConnectionString("productsConnection");
             // Référencer le Dbcontext.
             builder.Services.AddDbContext<ProductsDbContext>(options => options.UseSqlServer(connectionString));
 
@@ -27,11 +26,19 @@ namespace Products.Api
 
             var app = builder.Build();
 
+            // Migration automatique de la base de données
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ProductsDbContext>();
+                db.Database.Migrate();
+            }
+
             // Configure the HTTP request pipeline.
             //if (app.Environment.IsDevelopment())
             //{
             app.UseSwagger();
 
+            // Swagger UI accessible via "/" au lieu de "/swagger/"
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("swagger/v1/swagger.json", "Random Quotes API");
@@ -39,10 +46,12 @@ namespace Products.Api
             });
             //}
 
+            // Redirection de "/swagger/" vers "/" (pour les lancements depuis VisualStudio)
             var rewriteOptions = new RewriteOptions()
                 .AddRedirect("swagger/index.html", "/index.html", 301)
                 .AddRedirect("swagger", "/index.html", 301);
             app.UseRewriter(rewriteOptions);
+
 
             app.UseAuthorization();
 
