@@ -18,6 +18,7 @@ namespace Products.Api
             builder.Services.AddDbContext<ProductsDbContext>(options => options.UseSqlServer(connectionString));
 
             // builder.Services.AddDbContext<ProductsDbContext>();
+            Console.WriteLine(connectionString);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,7 +42,7 @@ namespace Products.Api
             // Swagger UI accessible via "/" au lieu de "/swagger/"
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("swagger/v1/swagger.json", "Random Quotes API");
+                c.SwaggerEndpoint("swagger/v1/swagger.json", "TP: Products API");
                 c.RoutePrefix = "";
             });
             //}

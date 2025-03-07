@@ -17,13 +17,10 @@
 
 # Utiliser l'application en local
 
-1. Initialiser la base de données (La migration est déjà prête à être appliquée)
-    1. Ouvrir la console du gestionnaire de package NuGet.
-    2. Entrer la commande `update-database`
-    3. La base de données est créée avec 5 produits
-2. Démarrer l'application en mode "Debug".
-    - L'application se lance dans le navigateur:  [localhost:5091/](http://localhost:5091/).
-3. Utiliser swaggerUI pour afficher la liste des produits (opération GET /api/Products)
+1. Démarrer l'application **Products.Api** en mode "Debug".
+    - L'application se lance dans le navigateur :  [localhost:5091](http://localhost:5091).
+    - Au 1er lancement, la base de données est créée et alimentée avec 5 produits.
+2. Utiliser swaggerUI pour afficher la liste des produits (opération GET /api/Products)
     - Ou tester directement l'URL : [localhost:5091/api/Products](http://localhost:5091/api/Products)
 
 # Travail à réaliser
