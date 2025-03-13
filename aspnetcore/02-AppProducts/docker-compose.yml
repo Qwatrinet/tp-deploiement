@@ -1,17 +1,7 @@
-name: app-products-database
+name: app-products-webapi
 
 networks:
-  app-products-network:
-    driver: bridge
+
 
 services:
-  products_api:
-    container_name: products_api
-    hostname: products_api
-    build: 
-      context: .
-      dockerfile: ./Dockerfile
-    networks:
-        - app-products-network
-    ports: 
-      - 4500:8080
+
