@@ -18,7 +18,7 @@ namespace Products.Api
             builder.Services.AddDbContext<ProductsDbContext>(options => options.UseSqlServer(connectionString));
 
             // builder.Services.AddDbContext<ProductsDbContext>();
-            Console.WriteLine(connectionString);
+            //Console.WriteLine(connectionString);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
