@@ -1,0 +1,11 @@
+name: container-node-cars
+
+services:
+  front-cars:
+    container_name: front-cars
+    hostname: front-cars
+    ports:
+      - 9000:3000
+    build:
+      context: .
+      dockerfile: ./Dockerfile
